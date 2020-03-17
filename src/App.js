@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Criteria from './components/Criteria/Criteria';
+import { useJokeFetch } from './hooks/displayJoke';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const [flags, setFlags] = useState(['Any'])
+  const [type, setType] = useState()
+  const [isLoading, jokeData] = useJokeFetch(`https://sv443.net/jokeapi/v2/joke/${flags.join('')}`, flags, type)
+  console.log(jokeData)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        isLoading ?
+        <h2>Loading joke...</h2>
+        :
+        <p>{jokeData.category}</p>
+      }
+      <Criteria />
     </div>
   );
 }
