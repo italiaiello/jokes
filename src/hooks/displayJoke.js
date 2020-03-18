@@ -18,8 +18,14 @@ export const useJokeFetch = (url, dependencies) => {
         fetch(url)
         .then(response => response.json())
         .then (data => {
-            setIsLoading(false);
-            setJokeData(data);
+            if (data.type === 'twopart') {
+                setIsLoading(false)
+                setJokeData([data.setup, data.delivery])
+            } else {
+                setJokeData([data.joke])
+            }
+            
+            
         })
         .catch(err => {
             console.log(err)

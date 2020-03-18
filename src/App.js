@@ -8,14 +8,23 @@ const App = () => {
   const [flags, setFlags] = useState(['Any'])
   const [type, setType] = useState()
   const [isLoading, jokeData] = useJokeFetch(`https://sv443.net/jokeapi/v2/joke/${flags.join('')}`, flags, type)
-  console.log(jokeData)
+
   return (
     <div className="App">
       {
         isLoading ?
         <h2>Loading joke...</h2>
         :
-        <p>{jokeData.category}</p>
+        (
+          jokeData.length === 2 ?
+          <div>
+            <p>{jokeData[0]}</p>
+            <p>{jokeData[1]}</p>
+          </div>
+          :
+          <p>{jokeData[0]}</p>
+        )
+        
       }
       <Criteria />
     </div>
