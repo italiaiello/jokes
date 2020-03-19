@@ -5,9 +5,10 @@ import './App.css';
 
 const App = () => {
 
-  const [flags, setFlags] = useState(['Any'])
-  const [type, setType] = useState()
-  const [isLoading, jokeData] = useJokeFetch(`https://sv443.net/jokeapi/v2/joke/${flags.join('')}`, flags, type)
+  const [categories, setCategories] = useState(['Any'])
+  const [flags, setFlags] = useState([])
+  const [type, setType] = useState('')
+  const [isLoading, jokeData] = useJokeFetch(`https://sv443.net/jokeapi/v2/joke/${categories.join(',')}?format=json?${flags.length ? flags.join(',') : ''}`, categories, type)
 
   return (
     <div className="App">
@@ -26,7 +27,7 @@ const App = () => {
         )
         
       }
-      <Criteria />
+      <Criteria setCategories={setCategories} setFlags={setFlags} setType={setType} />
     </div>
   );
 }
