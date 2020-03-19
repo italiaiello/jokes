@@ -22,6 +22,7 @@ export const useJokeFetch = (url, dependencies) => {
                 setIsLoading(false)
                 setJokeData([data.setup, data.delivery])
             } else {
+                setIsLoading(false)
                 setJokeData([data.joke])
             }
             

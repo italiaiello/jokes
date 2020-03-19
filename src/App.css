@@ -54,6 +54,7 @@ button {
   margin: 5px;
   width: 150px;
   height: 35px;
+  outline: none;
 }
 
 .selected {
