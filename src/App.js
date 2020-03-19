@@ -5,10 +5,10 @@ import './App.css';
 
 const App = () => {
 
-  const [categories, setCategories] = useState(['Any'])
+  const [categories, setCategories] = useState([])
   const [flags, setFlags] = useState([])
   const [type, setType] = useState('')
-  const [isLoading, jokeData] = useJokeFetch(`https://sv443.net/jokeapi/v2/joke/${categories.join(',')}?format=json?${flags.length ? flags.join(',') : ''}`, categories, type)
+  const [isLoading, jokeData] = useJokeFetch(`https://sv443.net/jokeapi/v2/joke/${categories.length ? categories.join(',') : 'Any'}?format=json&blacklistFlags=${flags.length ? flags.join(',') : ''}&type=${type}`, categories, flags, type)
 
   return (
     <div className="App">
@@ -27,7 +27,12 @@ const App = () => {
         )
         
       }
-      <Criteria setCategories={setCategories} setFlags={setFlags} setType={setType} />
+      <Criteria categories={categories}
+                setCategories={setCategories} 
+                flags={flags}
+                setFlags={setFlags} 
+                type={type}
+                setType={setType} />
     </div>
   );
 }

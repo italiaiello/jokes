@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Option = ({ option, setType, setCategories, setFlags }) => {
+const Option = ({ option, categories, setCategories, flags, setFlags }) => {
+
+    console.log(categories, flags)
 
     const onOptionSelect = event => {
         event.preventDefault()
@@ -14,18 +16,27 @@ const Option = ({ option, setType, setCategories, setFlags }) => {
             case 'Programming':
             case 'Miscellaneous':
             case 'Dark':
-                setCategories(option.toLowerCase())
+                if (event.target.classList.value === "") {
+                    console.log(option)
+                    const filteredCategories = categories.filter(category => category !== option)
+                    setCategories([...filteredCategories])
+                } else {
+                    setCategories([...categories, option])
+                }
                 break;
             case 'NSFW':
             case 'Religious':
             case 'Political':
             case 'Racist':
             case 'Sexist':
-                setFlags(option.toLowerCase())
-                break;
-            case 'Single':
-            case 'Two Part':
-                setType(option.toLowerCase())
+                if (event.target.classList.value === "") {
+                    console.log('flaggy flag')
+                    const filteredFlags = flags.filter(flag => flag !== option)
+                    console.log(filteredFlags)
+                    setFlags([...filteredFlags])
+                } else {
+                    setFlags([...flags, option.toLowerCase()])
+                }
                 break;
             default:
                 return 'Invalid option'

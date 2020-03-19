@@ -1,13 +1,38 @@
 import React from 'react';
 import Option from './Option';
 
-const Criteria = ({ setCategories, setFlags, setType }) => {
+const Criteria = ({ categories, setCategories, flags, setFlags, setType }) => {
 
-    const buttons = Array.from(document.getElementsByTagName('button'));
+    const availableCategories = ['Programming', 'Miscellaneous', 'Dark']
+    const availableFlags = ['NSFW', 'Religious', 'Political', 'Racist', 'Sexist']
 
-    const categories = ['Programming', 'Miscellaneous', 'Dark']
-    const flags = ['NSFW', 'Religious', 'Political', 'Racist', 'Sexist']
-    const types = ['Single', 'Two Part']
+    const onTypeSelect = event => {
+        event.preventDefault()
+        const typeSelected = event.target.dataset.id
+        const buttons = document.getElementsByClassName('typeSelectButton')
+        
+        if (typeSelected === '1') {
+            if (!buttons[0].classList.contains('selected')) {
+                buttons[0].classList.add('selected')
+                if (buttons[1].classList.contains('selected')) {
+                    buttons[1].classList.remove('selected')
+                }
+            } else {
+                buttons[0].classList.remove('selected')
+            }
+            setType('single')
+        } else if (typeSelected === '2') {
+            if (!buttons[1].classList.contains('selected')) {
+                buttons[1].classList.add('selected')
+                if (buttons[0].classList.contains('selected')) {
+                    buttons[0].classList.remove('selected')
+                }
+            } else {
+                buttons[1].classList.remove('selected')
+            }
+            setType('twopart')
+        }
+    }
 
     return (
         <section className="criteria">
@@ -17,8 +42,9 @@ const Criteria = ({ setCategories, setFlags, setType }) => {
                     <h3>Category</h3>
                     <article>
                         {
-                            categories.map(category => <Option key={category} 
-                                                                option={category} 
+                            availableCategories.map(category => <Option key={category} 
+                                                                option={category}
+                                                                categories={categories}
                                                                 setCategories={setCategories}
                                                         />)
                         }
@@ -28,7 +54,10 @@ const Criteria = ({ setCategories, setFlags, setType }) => {
                     <h3>Flag</h3>
                     <article>
                         {
-                            flags.map(flag => <Option key={flag} option={flag} setFlags={setFlags}/>)
+                            availableFlags.map(flag => <Option key={flag} 
+                                                option={flag}
+                                                flags={flags}
+                                                setFlags={setFlags}/>)
                         }
                     </article>
                 </article>
@@ -36,9 +65,8 @@ const Criteria = ({ setCategories, setFlags, setType }) => {
                 <article className="typeSelect">
                     <h3>Type</h3>
                     <article>
-                        {
-                            types.map(type => <Option key={type} option={type} setType={setType} />)
-                        }
+                        <button className="typeSelectButton" data-id="1" onClick={onTypeSelect}>Single</button>
+                        <button className="typeSelectButton" data-id="2" onClick={onTypeSelect}>Two Part</button>
                     </article>
                 </article>
             </form>
