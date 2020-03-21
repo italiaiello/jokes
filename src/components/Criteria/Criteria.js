@@ -36,7 +36,6 @@ const Criteria = ({ categories, setCategories, flags, setFlags, setType }) => {
 
     return (
         <section className="criteria">
-            <h3>Joke Filter</h3>
             <form>
                 <article className="categorySelect">
                     <h4>Category</h4>

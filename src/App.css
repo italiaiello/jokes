@@ -3,22 +3,43 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background-color: #1299c9;
 }
 
-.App-body {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+body {
+  font-family: Montserrat;
+}
+
+h1, h2, p {
+  color: white;
+}
+
+p {
+  font-size: 18px;
+}
+
+h2, h3, h4 {
+  margin-top: 0;
+}
+
+h4 {
+  color: #1299c9;
 }
 
 /* Joke */
 
+.joke-section {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .joke-container {
   margin: 0 auto;
-  width: 60%;
+  width: 50%;
   height: 150px;
   display: flex;
   justify-content: center;
@@ -28,7 +49,9 @@
 /* Criteria */
 
 .criteria {
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 form {
@@ -41,6 +64,11 @@ form {
 form article {
   margin: 0;
   display: flex;
+}
+
+.criteria {
+  height: 50vh;
+  background-color: white;
 }
 
 .categorySelect, .flagSelect, .typeSelect {
@@ -57,19 +85,31 @@ form article {
   margin: 0 auto;
 }
 
-h3 {
-  margin-bottom: 10px;
-}
-
 button {
   margin: 5px;
   width: 150px;
   height: 35px;
   outline: none;
+  color: #0e7aa1;
+  cursor: pointer;
+  border: none;
+  background-color: #d2eef7;
+  font-family: Montserrat;
+  transition: all .2s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.05, 1.05);
+}
+
+button:active {
+  transform: scale(0.95, 0.95);
 }
 
 .selected {
-  background-color: green;
+  background-color: #1299c9;
+  color: white;
+  font-weight: bold;
 }
 
 

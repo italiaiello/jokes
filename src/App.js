@@ -14,8 +14,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Joke Generator</h1>
-      <div className="App-body">
+      <div className="joke-section">
+        <h1>Joke Generator</h1>
         <div className="joke-container">
           {
             !jokeData.length ?
@@ -36,14 +36,14 @@ const App = () => {
             
           }
         </div>
-        <Criteria categories={categories}
-                  setCategories={setCategories} 
-                  flags={flags}
-                  setFlags={setFlags} 
-                  type={type}
-                  setType={setType} 
-        />
       </div>
+      <Criteria categories={categories}
+                setCategories={setCategories} 
+                flags={flags}
+                setFlags={setFlags} 
+                type={type}
+                setType={setType} 
+      />
     </div>
   );
 }
