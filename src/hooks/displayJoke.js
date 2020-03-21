@@ -1,22 +1,16 @@
 import { useState, useEffect } from 'react';
 
-export const useJokeFetch = (url, dependencies) => {
+export const useJokeFetch = (url) => {
 
     const [isLoading, setIsLoading] = useState(false);
     const [jokeData, setJokeData] = useState([]);
 
-    console.log(dependencies)
-
     useEffect(() => {
         setIsLoading(true);
 
-        if (dependencies === false) {
-            setIsLoading(false);
-            return;
-        }
+        console.log('hello')
 
         console.log(url)
-
         console.log('Fetching joke data...');
         fetch(url)
         .then(response => response.json())
@@ -36,8 +30,9 @@ export const useJokeFetch = (url, dependencies) => {
             setIsLoading(false);
             setJokeData('No jokes found');
         })
+        
 
-    }, [url, dependencies])
+    }, [url])
 
     return [isLoading, jokeData];
 

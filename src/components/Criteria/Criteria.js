@@ -36,10 +36,10 @@ const Criteria = ({ categories, setCategories, flags, setFlags, setType }) => {
 
     return (
         <section className="criteria">
-            <h2>Joke Filter</h2>
+            <h3>Joke Filter</h3>
             <form>
                 <article className="categorySelect">
-                    <h3>Category</h3>
+                    <h4>Category</h4>
                     <article>
                         {
                             availableCategories.map(category => <Option key={category} 
@@ -51,7 +51,7 @@ const Criteria = ({ categories, setCategories, flags, setFlags, setType }) => {
                     </article>
                 </article>
                 <article className="flagSelect">
-                    <h3>Flag</h3>
+                    <h4>Flag</h4>
                     <article>
                         {
                             availableFlags.map(flag => <Option key={flag} 
@@ -63,7 +63,7 @@ const Criteria = ({ categories, setCategories, flags, setFlags, setType }) => {
                 </article>
                 <br />
                 <article className="typeSelect">
-                    <h3>Type</h3>
+                    <h4>Type</h4>
                     <article>
                         <button className="typeSelectButton" data-id="1" onClick={onTypeSelect}>Single</button>
                         <button className="typeSelectButton" data-id="2" onClick={onTypeSelect}>Two Part</button>

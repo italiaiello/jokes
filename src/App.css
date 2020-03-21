@@ -7,6 +7,24 @@
   align-items: center;
 }
 
+.App-body {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+/* Joke */
+
+.joke-container {
+  margin: 0 auto;
+  width: 60%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Criteria */
 
 .criteria {

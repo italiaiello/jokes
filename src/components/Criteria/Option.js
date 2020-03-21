@@ -2,13 +2,11 @@ import React from 'react'
 
 const Option = ({ option, categories, setCategories, flags, setFlags }) => {
 
-    console.log(categories, flags)
-
     const onOptionSelect = event => {
         event.preventDefault()
-        if (event.target.classList.value === "") {
+        if (!event.target.classList.contains('selected')) {
             event.target.classList.add('selected')
-        } else if (event.target.classList.value === "selected") {
+        } else {
             event.target.classList.remove('selected')
         }
 
@@ -16,8 +14,7 @@ const Option = ({ option, categories, setCategories, flags, setFlags }) => {
             case 'Programming':
             case 'Miscellaneous':
             case 'Dark':
-                if (event.target.classList.value === "") {
-                    console.log(option)
+                if (!event.target.classList.contains('selected')) {
                     const filteredCategories = categories.filter(category => category !== option)
                     setCategories([...filteredCategories])
                 } else {
@@ -29,10 +26,8 @@ const Option = ({ option, categories, setCategories, flags, setFlags }) => {
             case 'Political':
             case 'Racist':
             case 'Sexist':
-                if (event.target.classList.value === "") {
-                    console.log('flaggy flag')
-                    const filteredFlags = flags.filter(flag => flag !== option)
-                    console.log(filteredFlags)
+                if (!event.target.classList.contains('selected')) {
+                    const filteredFlags = flags.filter(flag => flag !== option.toLowerCase())
                     setFlags([...filteredFlags])
                 } else {
                     setFlags([...flags, option.toLowerCase()])
